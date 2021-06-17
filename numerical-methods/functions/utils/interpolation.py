@@ -115,7 +115,7 @@ def cubic_spline(x, y):
     a = y
     v = zeros(x.shape)
     h = round([x[i + 1] - x[i] for i in range(len(x) - 1)], 3)
-    u = round([2 * (h[i] + h[i - 1]) for i in range(1, len(h))], 3)
+    # u = round([2 * (h[i] + h[i - 1]) for i in range(1, len(h))], 3)
     w = round([(1 / h[i]) * (a[i + 1] - a[i]) for i in range(len(a) - 1)], 3)
     for i in range(1, len(w)):
         v[i] = round(3 * (w[i] - w[i - 1]), 10)
@@ -130,4 +130,4 @@ def cubic_spline(x, y):
     b = round([(1 / h[i]) * (a[i + 1] - a[i]) - (h[i] / 3) * (c[i + 1] + 2 * c[i]) for i in range(len(x) - 1)], 3)
     d = round([(c[i + 1] - c[i]) / (3 * h[i]) for i in range(len(x) - 1)], 3)
 
-    return a, b, c, d
+    return a[:len(b)], b, c[:len(b)], d
