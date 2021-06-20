@@ -19,5 +19,7 @@ def polyfit(x, y, deg):
 
     table, b = asarray(table), asarray(b).reshape(order, 1)
     coeffi = flipud(round(linalg.inv(table).dot(b), 8).flatten())
+    print(table)
+    print(b)
 
     return coeffi
